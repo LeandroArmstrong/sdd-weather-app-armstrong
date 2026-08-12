@@ -78,6 +78,46 @@ pnpm test:e2e        # testes E2E (Playwright)
 
 ---
 
+## 📋 Especificação Formal (Weather App v1.0)
+
+**LEIA ANTES DE CODIFICAR**: [specs/discovery.md](specs/discovery.md)
+
+A especificação completa está documentada em **[specs/discovery.md](specs/discovery.md)** e inclui:
+
+- **Visão Geral** — Objetivo, público-alvo, proposta de valor
+- **7 Histórias de Usuário** com critérios de aceite verificáveis:
+  - HU1: Buscar cidades (autocomplete)
+  - HU2: Visualizar clima atual
+  - HU3: Visualizar previsão de 5 dias
+  - HU4: Alternar Celsius/Fahrenheit
+  - HU5: Salvar cidades favoritas
+  - HU6: Histórico de buscas
+  - HU7: Suporte offline (PWA)
+- **Modelo de Dados** — TypeScript interfaces (City, CurrentWeather, Forecast, etc.)
+- **Especificação de API Open-Meteo** — Endpoints, requests, responses, WMO codes
+- **Requisitos Não-Funcionais** — Performance (<2s), A11y (WCAG 2.1 AA), Segurança (HTTPS), SEO
+- **Fluxos de Interação** — Happy path, offline, timeout, mobile
+- **Critérios de Aceite Globais** — Testes (≥80% coverage), E2E, lint zero warnings, bundle <200KB
+
+**13 Decisões de MVP** respondidas:
+1. ✅ Escopo: Brasil (todas as cidades)
+2. ✅ Atualização: 30 min automático + refresh manual
+3. ✅ Dados: Temp, umidade, vento, sensação térmica, nascer/pôr
+4. ✅ Previsão: Diária (mín/máx) × 5 dias
+5. ✅ Persistência: Histórico (10) + favoritos (5) em localStorage
+6. ✅ Autenticação: Anônimo (sem login)
+7. ✅ Unidade padrão: °C (geolocalização BR)
+8. ✅ Plataforma: PWA (web + installable)
+9. ✅ Critérios verificáveis: Por feature
+10. ✅ Tratamento de erros: Cache fallback + retry
+11. ✅ Privacidade: GDPR/LGPD compliant
+12. ✅ Monetização: Free (v2: freemium)
+13. ✅ KPIs: DAU 10K, churn <5%/semana
+
+> **Princípio Fundador**: NÃO COMECE PELO CÓDIGO. Sempre Spec → Plan → Tasks → Code.
+
+---
+
 ## Arquitetura do app
 
 ```text
