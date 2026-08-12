@@ -42,7 +42,51 @@ Fornecer aos usuários brasileiros um **aplicativo web de previsão do tempo mod
 
 ---
 
-## 👥 2. HISTÓRIAS DE USUÁRIO E CRITÉRIOS DE ACEITE
+## 🧭 2. DECISÕES
+
+### 2.1. Fonte de dados: Open-Meteo
+
+**Decisão**: usar a API do Open-Meteo para geocodificação e previsão do tempo, sem necessidade de chave de API.
+
+**Justificativa**: o Open-Meteo fornece dados meteorológicos confiáveis, é gratuito para uso em MVP e elimina a necessidade de autenticação ou infraestrutura de backend.
+
+**O que resolve**: fecha a incerteza sobre a fonte de dados, reduz o custo e a complexidade de integração e garante que o produto funcione sem credenciais externas.
+
+### 2.2. "5 dias" = hoje + 4 dias
+
+**Decisão**: a seção de previsão de 5 dias cobrirá o dia atual e mais quatro dias seguintes, totalizando cinco registros na tela.
+
+**Justificativa**: essa definição é clara para usuários e compatível com a expectativa de uma previsão de curto prazo sem ambiguidade sobre contagem de dias.
+
+**O que resolve**: elimina a dúvida sobre se "5 dias" significa a partir de amanhã ou incluindo o dia atual, padronizando a renderização e os critérios de aceite.
+
+### 2.3. Unidade padrão: Celsius
+
+**Decisão**: a interface usa Celsius como unidade padrão, com possibilidade de alternar para Fahrenheit via toggle.
+
+**Justificativa**: o público-alvo é brasileiro e a unidade mais comum no país será a default para reduzir fricção e melhorar a experiência inicial.
+
+**O que resolve**: define a unidade inicial da aplicação, a conversão exigida, a persistência da preferência do usuário e a expectativa de comportamento da tela.
+
+### 2.4. Sem autenticação e sem persistência de servidor
+
+**Decisão**: o app não requer login e os dados persistentes serão mantidos no cliente (localStorage/cache local), sem backend próprio.
+
+**Justificativa**: essa abordagem mantém o MVP simples, reduz custo operacional e é suficiente para cenários como favoritos, histórico e preferências de unidade sem infraestrutura de servidor.
+
+**O que resolve**: fecha a necessidade de autenticação, de banco de dados do lado do servidor e de sincronização remota, definindo o modelo de persistência e a arquitetura do produto.
+
+### 2.5. Idioma da UI: pt-BR
+
+**Decisão**: toda a interface será em português do Brasil, incluindo labels, textos de ajuda, descrições de clima e textos de status.
+
+**Justificativa**: o app tem foco em usuários brasileiros e a experiência fica mais natural, acessível e alinhada ao mercado local.
+
+**O que resolve**: define o idioma do produto, remove ambiguidades sobre localização e linguagem da interface e orienta a tradução dos rótulos, mensagens e datas.
+
+---
+
+## 👥 3. HISTÓRIAS DE USUÁRIO E CRITÉRIOS DE ACEITE
 
 ### HU1: Buscar Cidades (Autocomplete)
 
